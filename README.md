@@ -1,9 +1,9 @@
 # Workshop with FactoryBoy
 
 ## How to start
-0. Clone repo and create virtual env.
-1. ```pip install -r requirements.txt```
-2. Create environment variable TEST_DB_URL with the url you want to use for this workhop. The database from url doesn't have to exist yet. 
+1. Clone repo and create virtual env.
+2. ```pip install -r requirements.txt```
+3. Create environment variable TEST_DB_URL with the url you want to use for this workhop. The database from url doesn't have to exist yet. 
 
 
 ## Links
@@ -21,9 +21,8 @@ Problems I got on my WSL and what helped:
 
 * proxy error on wsl (ubuntu 18.04)
 
-```export http_proxy=http://gateway.schneider.zscaler.net:9480```
-
-```export https_proxy=https://gateway.schneider.zscaler.net:9480```
+1. export env variables http_proxy and https_proxy
+2. proxy.conf
 > Created a proxy.conf file in /etc/apt/apt.conf.d/
 > 
 >Inside this file put: Acquire::http::Proxy "http://myproxy:myproxyport";
