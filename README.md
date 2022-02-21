@@ -3,7 +3,7 @@
 ## How to start
 1. Clone repo and create virtual env.
 2. ```pip install -r requirements.txt```
-3. Create environment variable TEST_DB_URL with the url you want to use for this workhop. The database from url doesn't have to exist yet. 
+3. Create environment variable TEST_DB_URL with the url you want to use for this workhop. You don't have to create the database.
 
 
 ## Links
