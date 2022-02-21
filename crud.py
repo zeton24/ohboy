@@ -18,5 +18,5 @@ def get_customers(session, sesa: str, customer_type: str):
         Employee.sesa == sesa, CustomerType.name == customer_type).all()
 
 
-def get_customers_from_team(session, team_name: str):
-    return session.query(Customer).join(Employee, TeamMembership, Team).filter(Team.name == team_name).all()
+def get_employees_from_team(session, team_name: str):
+    return session.query(Employee).join(TeamMembership, Team).filter(Team.name == team_name).all()

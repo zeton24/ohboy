@@ -3,12 +3,7 @@
 ## How to start
 0. Clone repo and create virtual env.
 1. ```pip install -r requirements.txt```
-2. Create environment variable TEST_DB_URL with the url you want to use for this workhop.
-3. Create database:
-    * Manually on your local server and restore with backup from _data_ folder
-    
-    OR
-    * Run script _setup.py_. The database from url doesn't have to exist yet. (You will need psycopg2 library for that.)
+2. Create environment variable TEST_DB_URL with the url you want to use for this workhop. The database from url doesn't have to exist yet. 
 
 
 ## Links
