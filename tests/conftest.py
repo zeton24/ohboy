@@ -6,10 +6,12 @@ from pytest_factoryboy import register
 
 from models import Base
 from crud import get_session
-from tests.factories import EmployeeFactory, TeamFactory, TeamMembershipFactory, EmployeeWithTeamFactory
+from tests.factories import EmployeeFactory, TeamFactory, TeamMembershipFactory, EmployeeWithTeamFactory, \
+    CustomerTypeFactory, CustomerFactory
 
 
-factories = [EmployeeFactory, TeamFactory, TeamMembershipFactory, EmployeeWithTeamFactory]
+factories = [EmployeeFactory, TeamFactory, TeamMembershipFactory, EmployeeWithTeamFactory, CustomerTypeFactory,
+             CustomerFactory]
 for factory in factories:
     register(factory)
 

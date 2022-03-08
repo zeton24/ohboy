@@ -1,5 +1,5 @@
 from models import Customer, Employee, CustomerType
-from crud import get_session, get_customers, get_employees_from_team
+from crud import get_customers, get_employees_from_team
 
 
 def test_get_customers(test_session):
@@ -12,9 +12,15 @@ def test_get_customers(test_session):
     assert len(result) == 2
 
 
-def test_get_customers_realistic():
-    # more employees, customer types
-    pass
+def test_get_customers_with_factories(test_session, customer_factory):
+    customer = customer_factory.create()
+    result = get_customers(test_session, sesa=customer.employee.sesa, customer_type=customer.customer_type.name)
+    customer_factory.create_batch(5)
+    assert len(result) == 1
+    assert result[0].name == customer.name
+    customer_factory.create_batch(3, employee=customer.employee, customer_type=customer.customer_type)
+    result2 = get_customers(test_session, sesa=customer.employee.sesa, customer_type=customer.customer_type.name)
+    assert len(result2) == 4
 
 
 def test_get_customers_from_team(test_session, employee_with_team_factory, team_factory):
@@ -24,4 +30,3 @@ def test_get_customers_from_team(test_session, employee_with_team_factory, team_
     result = get_employees_from_team(test_session, team_name=team.name)
     assert len(result) == 4
     assert other_employee.teams[0].name != team.name
-
