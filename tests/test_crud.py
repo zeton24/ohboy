@@ -19,8 +19,7 @@ def test_get_customers_realistic():
 
 def test_get_customers_from_team(test_session, employee_with_team_factory, team_factory):
     team = team_factory.create()
-    employee_with_team_factory.create(name='Jan Smith', assignment__team=team)
-    employee_with_team_factory.create_batch(3, assignment__team=team)
+    employee_with_team_factory.create_batch(4, assignment__team=team)
     other_employee = employee_with_team_factory.create(guest=True)
     result = get_employees_from_team(test_session, team_name=team.name)
     assert len(result) == 4

@@ -19,6 +19,7 @@ class BaseFactory(factory.alchemy.SQLAlchemyModelFactory):
 class EmployeeFactory(BaseFactory):
     class Meta:
         model = Employee
+        sqlalchemy_get_or_create = ('sesa',)
 
     sesa = factory.Sequence(lambda x: f'SESA1{x}')
     name = factory.Faker('name', locale='pl_PL')
