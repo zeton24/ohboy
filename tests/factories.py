@@ -2,7 +2,7 @@ import factory
 from factory.fuzzy import FuzzyChoice, FuzzyDate
 from datetime import date, datetime
 
-from models import Employee, Team, TeamMembership
+from models import Employee, Team, TeamMembership, CustomerType, Customer
 from crud import get_session
 
 session = get_session()
@@ -54,3 +54,25 @@ class TeamMembershipFactory(BaseFactory):
 
 class EmployeeWithTeamFactory(EmployeeFactory):
     assignment = factory.RelatedFactory(TeamMembershipFactory, factory_related_name='employee')
+
+
+class CustomerTypeFactory(BaseFactory):
+    class Meta:
+        model = CustomerType
+
+    name = factory.Sequence(lambda x: f'Type {x + 1}')
+    zone = factory.Faker('locale')
+    priority = FuzzyChoice([1, 2, 3])
+
+
+class CustomerFactory(BaseFactory):
+    class Meta:
+        model = Customer
+
+    name = factory.Faker('company')
+    address = factory.Faker('address')
+    employee = factory.SubFactory(EmployeeFactory)
+    employee_id = factory.LazyAttribute(lambda x: x.employee.id)
+    last_purchase_date = factory.LazyFunction(datetime.now)
+    customer_type = factory.SubFactory(CustomerTypeFactory)
+    customer_type_id = factory.LazyAttribute(lambda x: x.customer_type.id)
