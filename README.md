@@ -6,11 +6,6 @@
 3. Create environment variable TEST_DB_URL with the url you want to use for this workhop. You don't have to create the database.
 
 
-## Links
-- [FactoryBoy documentation](https://factoryboy.readthedocs.io/en/stable/introduction.html)
-- [Faker providers](https://faker.readthedocs.io/en/master/providers.html)
-
-
 ## Troubleshooting
 Problems I got on my WSL and what helped:
 * error while installing psycopg2 
@@ -28,3 +23,36 @@ Problems I got on my WSL and what helped:
 >Inside this file put: Acquire::http::Proxy "http://myproxy:myproxyport";
 
 source -> https://github.com/microsoft/WSL/issues/1570
+
+
+
+## Agenda
+
+- How to use FactoryBoy
+    * tests
+    * dummy data 
+    
+- Factories (based on sqlalchemy models)
+    * Faker
+    * class Params
+    * Traits
+    * Sequence
+    * LazyFunction
+    * Fuzzy attributes 
+
+- Implementation in tests
+    * providing session
+    * fixtures registration
+    * strategies
+
+
+- Relations between models mapped to factories
+    * Relations 1:n    
+        - RelatedFactory
+        - SubFactory
+    * Relations n:m
+
+
+## Links
+- [FactoryBoy documentation](https://factoryboy.readthedocs.io/en/stable/introduction.html)
+- [Faker providers](https://faker.readthedocs.io/en/master/providers.html)
